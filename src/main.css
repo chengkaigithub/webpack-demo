@@ -1,0 +1,17 @@
+@import '../static/fontcss/font.css';
+
+body {
+    background: #f0d0e0;
+}
+
+.custom-font {
+    color: red;
+    font-family: 'myFirstFont';
+    background: url(../static/img/tc1.png);
+}
+
+img {
+    width: 200px;
+    height: 200px;
+    background-color: deeppink;
+}
