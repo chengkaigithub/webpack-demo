@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const imageMinPngQuant = require("imagemin-pngquant");
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   plugins: [
@@ -22,7 +23,10 @@ module.exports = {
       chunks: ['app', 'another', "common"],
       chunksSortMode: 'dependency',
       mobile: true
-    })
+    }),
+    new CopyWebpackPlugin(
+      [{ from: './static', to: './static', force: false }]
+    )
   ],
   output: {
     filename: '[name].[hash].bundle.js',
