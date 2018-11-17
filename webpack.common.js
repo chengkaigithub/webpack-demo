@@ -41,7 +41,8 @@ module.exports = {
           {
             loader: "url-loader",
             options: {
-              name: "[path][name]-[hash:5].min.[ext]",
+              // name: "[path][name]-[hash:5].min.[ext]",
+              name: "[path][name].[ext]",
               limit: 1000, // size <= 1KB
             }
           },
