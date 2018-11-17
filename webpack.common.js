@@ -1,6 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-// const imageMinPngQuant = require("imagemin-pngquant");
+const imageMinPngQuant = require("imagemin-pngquant");
 
 module.exports = {
   plugins: [
@@ -47,16 +47,16 @@ module.exports = {
             }
           },
           // img-loader for zip img
-          // {
-          //   loader: "img-loader",
-          //   options: {
-          //     plugins: [
-          //       imageMinPngQuant({
-          //         quality: "80" // the quality of zip
-          //       })
-          //     ]
-          //   }
-          // }
+          {
+            loader: "img-loader",
+            options: {
+              plugins: [
+                imageMinPngQuant({
+                  quality: "80" // the quality of zip
+                })
+              ]
+            }
+          }
         ]
       },
       {
