@@ -18,7 +18,7 @@ class Main extends React.Component {
     return (
       <div style={styles.containerStyle}>
         <div>react组件</div>
-        <img src='../static/img/tc1.png' alt=""/>
+        <img src='/static/img/tc1.png' alt=""/>
       </div>
     );
   }
