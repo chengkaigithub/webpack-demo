@@ -5,13 +5,21 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import _ from 'lodash';
 import './main.css';
 
 class Main extends React.Component {
 
-  componentDidMount() {
-    console.log(_.join(['print', 'print', 'print!'], ' '));
+  // componentDidMount() {
+    // import(/* webpackChunkName: "lodash" */ 'lodash').then(_ => {
+    //   console.log(_.join(['lodash', 'loaded', 'finish'], '->'));
+    // }).catch(error => 'An error occurred while loading the component');
+  // }
+
+  clickImg = () => {
+    import(/* webpackChunkName: "print" */ './print').then(module => {
+      var print = module.default;
+      print();
+    });
   }
 
   render() {
@@ -20,7 +28,7 @@ class Main extends React.Component {
         <div>react组件</div>
         <img src="/static/img/tc2.png" alt=""/>
         {/* 图片需要压缩的话需要使用require 相对路径引入 */}
-        <img src={require('../static/img/merchant_auth.png')} alt=""/>
+        <img src={require('../static/img/merchant_auth.png')} alt="" onClick={this.clickImg}/>
       </div>
     );
   }

@@ -30,6 +30,7 @@ module.exports = {
   ],
   output: {
     filename: '[name].[hash].bundle.js',
+    chunkFilename: '[name].[chunkhash:5].bundle.js',
     path: path.resolve(__dirname, 'build'),
     publicPath: '/'
   },
@@ -71,20 +72,21 @@ module.exports = {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: {
-          loader: "babel-loader"
+          loader: "babel-loader",
+          // options: { "babelrc": true } // default option
         }
       },
     ]
   },
-  optimization: {
-    splitChunks: {
-      cacheGroups: {
-        common: {
-          name: "common",
-          chunks: "initial",
-          minChunks: 2
-        }
-      }
-    }
-  }
+  // optimization: {
+  //   splitChunks: {
+  //     cacheGroups: {
+  //       common: {
+  //         name: "common",
+  //         chunks: "initial",
+  //         minChunks: 2
+  //       }
+  //     }
+  //   }
+  // }
 };

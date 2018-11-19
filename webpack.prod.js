@@ -22,7 +22,7 @@ module.exports = merge(common, {
   mode: 'production',
   entry: {
     app: [path.resolve(__dirname, './src/main.jsx')],
-    another: path.resolve(__dirname, './src/another-module.js'),
+    // another: path.resolve(__dirname, './src/another-module.js'),
   },
   plugins: [
     new CleanWebpackPlugin(['build']),
