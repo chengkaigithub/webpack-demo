@@ -6,6 +6,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Loadable from "react-loadable";
+import _ from 'lodash';
 import './main.css';
 
 class Main extends React.Component {
@@ -21,7 +22,7 @@ class Main extends React.Component {
     //   var print = module.default;
     //   print();
     // });
-
+    _.join(['main', 'print', '!'], ' ')
     Loadable({
       loader: () => import(/* webpackChunkName: "print" */ "./print"),
       loading: <div style={{ width: '200px', height: '200px', backgroundColor: 'pink' }}>加载中...</div>

@@ -6,7 +6,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'Output Management',
+      title: 'Caching',
       filename: 'index.html',
       template: 'index.html',
       inject: true,
@@ -29,7 +29,7 @@ module.exports = {
     )
   ],
   output: {
-    filename: '[name].[hash].bundle.js',
+    filename: '[name].[hash:5].bundle.js',
     chunkFilename: '[name].[chunkhash:5].bundle.js',
     path: path.resolve(__dirname, 'build'),
     publicPath: '/'
@@ -81,10 +81,11 @@ module.exports = {
   optimization: {
     splitChunks: {
       cacheGroups: {
-        common: {
-          name: "common",
+        vendor: {
+          name: "vendor",
+          test: /lodash/,
           chunks: "initial",
-          minChunks: 2
+          // minChunks: 2
         }
       }
     }

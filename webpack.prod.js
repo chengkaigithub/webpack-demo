@@ -22,7 +22,6 @@ module.exports = merge(common, {
   mode: 'production',
   entry: {
     app: [path.resolve(__dirname, './src/main.jsx')],
-    // another: path.resolve(__dirname, './src/another-module.js'),
   },
   plugins: [
     new CleanWebpackPlugin(['build']),
@@ -31,7 +30,7 @@ module.exports = merge(common, {
       'process.env.NODE_ENV': JSON.stringify('production')
     }),
     new ExtractTextPlugin({
-      filename: '[name].[hash].css',
+      filename: '[name].[hash:5].css',
       allChunks: false,
     }),
     // extractCSS,
@@ -41,6 +40,9 @@ module.exports = merge(common, {
     rules: [
       {
         test: /\.css$/,
+        // use: [
+        //   "style-loader", "css-loader"
+        // ]
         use: ExtractTextPlugin.extract({
           fallback: "style-loader",
           use: "css-loader"

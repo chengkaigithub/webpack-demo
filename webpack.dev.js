@@ -13,11 +13,7 @@ module.exports = merge(common, {
     app: [
       path.resolve(__dirname, './src/main.jsx'),
       'webpack-hot-middleware/client' // release need delete : 'webpack-hot-middleware/client'
-    ],
-    // another: [
-    //   path.resolve(__dirname, './src/another-module.js'),
-    //   'webpack-hot-middleware/client' // release need delete : 'webpack-hot-middleware/client'
-    // ],
+    ]
   },
   devtool: 'inline-source-map',
   plugins: [
