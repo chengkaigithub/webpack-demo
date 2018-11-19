@@ -78,15 +78,15 @@ module.exports = {
       },
     ]
   },
-  // optimization: {
-  //   splitChunks: {
-  //     cacheGroups: {
-  //       common: {
-  //         name: "common",
-  //         chunks: "initial",
-  //         minChunks: 2
-  //       }
-  //     }
-  //   }
-  // }
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        common: {
+          name: "common",
+          chunks: "initial",
+          minChunks: 2
+        }
+      }
+    }
+  }
 };
