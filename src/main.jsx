@@ -21,11 +21,14 @@ class Main extends React.Component {
     //   var print = module.default;
     //   print();
     // });
+
     Loadable({
       loader: () => import(/* webpackChunkName: "print" */ "./print"),
       loading: <div style={{ width: '200px', height: '200px', backgroundColor: 'pink' }}>加载中...</div>
-    });
-  }
+    }).preload() // 预加载|主动加载, 重复调用只执行一次
+      .then(target => target.default())
+      .catch(e => console.error('Loadable 加载 Error:', e));
+  };
 
   render() {
     return (
