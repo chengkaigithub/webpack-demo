@@ -78,15 +78,15 @@ module.exports = {
       },
     ]
   },
-  optimization: {
-    splitChunks: {
-      cacheGroups: {
-        vendor: {
-          name: "vendor",
-          chunks: "initial",
-          // minChunks: 2
-        }
-      }
-    }
-  }
+  // optimization: {
+  //   splitChunks: {
+  //     cacheGroups: {
+  //       vendor: {
+  //         name: "vendor",
+  //         chunks: "initial",
+  //         // minChunks: 2
+  //       }
+  //     }
+  //   }
+  // }
 };
