@@ -83,7 +83,6 @@ module.exports = {
       cacheGroups: {
         vendor: {
           name: "vendor",
-          test: /lodash/,
           chunks: "initial",
           // minChunks: 2
         }
