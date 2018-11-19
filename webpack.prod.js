@@ -29,6 +29,7 @@ module.exports = merge(common, {
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('production')
     }),
+    new webpack.HashedModuleIdsPlugin(), // 未修改的模块儿保持名称不变
     new ExtractTextPlugin({
       filename: '[name].[hash:5].css',
       allChunks: false,
