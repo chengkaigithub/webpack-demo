@@ -20,7 +20,7 @@ module.exports = {
         minifyURLs: true, // ?需要插件支持?
       },
       cache: true,
-      chunks: ['app', 'another', "common"],
+      chunks: ['app', 'vendor'],
       chunksSortMode: 'dependency',
       mobile: true
     }),
@@ -78,15 +78,15 @@ module.exports = {
       },
     ]
   },
-  // optimization: {
-  //   splitChunks: {
-  //     cacheGroups: {
-  //       vendor: {
-  //         name: "vendor",
-  //         chunks: "initial",
-  //         // minChunks: 2
-  //       }
-  //     }
-  //   }
-  // }
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        vendor: {
+          name: "vendor",
+          chunks: "initial",
+          test: /lodash/,
+        }
+      }
+    }
+  }
 };
