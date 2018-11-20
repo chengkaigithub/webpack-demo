@@ -17,12 +17,20 @@ class Main extends React.Component {
   // }).catch(error => 'An error occurred while loading the component');
   // }
 
+  fetchData = () => {
+    fetch('https://jsonplaceholder.typicode.com/users')
+      .then(response => response.json())
+      .then(json => console.log(json))
+      .catch(error => console.error('Something went wrong when fetching this data: ', error));
+  }
+
   clickImg = () => {
+    this.fetchData();
     // import(/* webpackChunkName: "print" */ './print').then(module => {
     //   var print = module.default;
     //   print();
     // });
-    _.join(['main', 'print', '!'], ' ')
+    console.log(_.join(['main', 'print', '!'], ' '));
     Loadable({
       loader: () => import(/* webpackChunkName: "print" */ "./print"),
       loading: <div style={{ width: '200px', height: '200px', backgroundColor: 'pink' }}>加载中...</div>

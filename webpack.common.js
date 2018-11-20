@@ -2,15 +2,19 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const imageMinPngQuant = require("imagemin-pngquant");
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const InsertCustomScriptPlugin = require('./InsertCustomScriptPlugin');
 
 module.exports = {
+  entry: {
+    polyfills: [path.resolve(__dirname, './src/polyfills.js')],
+  },
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'Caching',
-      filename: 'index.html',
+      title: 'HtmlWebpackPlugin',
+      // filename: 'index.html',
       template: 'index.html',
       inject: true,
-      // hash: true,
+      // hash: true, // query 参数拼接hash值
       minify: {
         collapseWhitespace: true,
         removeComments: true,
@@ -20,13 +24,14 @@ module.exports = {
         minifyURLs: true, // ?需要插件支持?
       },
       cache: true,
-      chunks: ['app', 'vendor'],
+      chunks: ['app', 'vendor', 'polyfills'],
       chunksSortMode: 'dependency',
       mobile: true
     }),
     new CopyWebpackPlugin(
       [{ from: './static', to: './static', force: false }]
-    )
+    ),
+    new InsertCustomScriptPlugin({ chunkNames: ['polyfills'] })
   ],
   output: {
     filename: '[name].[hash:5].bundle.js',
