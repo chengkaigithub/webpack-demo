@@ -18,6 +18,7 @@ class Main extends React.Component {
   // }
 
   fetchData = () => {
+    console.log('环境:', process.env.NODE_ENV);
     fetch('https://jsonplaceholder.typicode.com/users')
       .then(response => response.json())
       .then(json => console.log(json))
