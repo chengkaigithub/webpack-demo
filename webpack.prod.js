@@ -16,7 +16,7 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 // });
 
 const common = require('./webpack.common.js');
-
+console.log('环境:', process.env.NODE_ENV);
 module.exports = merge(common, {
   mode: 'production',
   entry: {
@@ -25,9 +25,9 @@ module.exports = merge(common, {
   plugins: [
     new CleanWebpackPlugin(['build']),
     new UglifyJSPlugin(),
-    new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify('production')
-    }),
+    // new webpack.DefinePlugin({
+    //   'process.env.NODE_ENV': JSON.stringify('production')
+    // }),
     new webpack.HashedModuleIdsPlugin(), // 未修改的模块儿保持名称不变
     new ExtractTextPlugin({
       filename: '[name].[hash:5].css',
