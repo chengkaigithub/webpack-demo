@@ -7,7 +7,7 @@ module.exports = (product) => ({
   meta: product ? {} : {
     'Content-Security-Policy': {
       'http-equiv': 'Content-Security-Policy',
-      'content': "default-src 'self';script-src 'self' https://cdn.staticfile.org 'nonce-EDNnf03nceIOfn39fn3e9h3sdfa';style-src 'self' 'unsafe-inline';connect-src 'self' https://jsonplaceholder.typicode.com;"
+      'content': "default-src 'self';script-src 'self' 'unsafe-inline' https://cdn.staticfile.org 'nonce-EDNnf03nceIOfn39fn3e9h3sdfa';style-src 'self' 'unsafe-inline';connect-src 'self' https://jsonplaceholder.typicode.com;"
     }
   },
   title: 'HtmlWebpackPlugin',
