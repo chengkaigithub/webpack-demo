@@ -22,7 +22,7 @@ class InsertCustomScriptPlugin {
       return tempHtml;
     }
     this.insertScript = fileName => `
-      <script>
+      <script nonce=EDNnf03nceIOfn39fn3e9h3sdfa>
       var modernBrowser = ('fetch' in window && 'assign' in Object);
       if (!modernBrowser) {
         var scriptElement = document.createElement('script');
