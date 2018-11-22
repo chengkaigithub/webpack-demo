@@ -3,31 +3,13 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const imageMinPngQuant = require("imagemin-pngquant");
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const InsertCustomScriptPlugin = require('./InsertCustomScriptPlugin');
-
+const htmlWebpackPluginConfig = require('./config')(true);
 module.exports = {
   entry: {
     polyfills: [path.resolve(__dirname, './src/polyfills.js')],
   },
   plugins: [
-    new HtmlWebpackPlugin({
-      title: 'HtmlWebpackPlugin',
-      // filename: 'index.html',
-      template: 'index.html',
-      inject: true,
-      // hash: true, // query 参数拼接hash值
-      minify: {
-        collapseWhitespace: true,
-        removeComments: true,
-        removeAttributeQuotes: true,
-        minifyJS: true, // ?需要插件支持?
-        minifyCSS: true, // ?需要插件支持?
-        minifyURLs: true, // ?需要插件支持?
-      },
-      cache: true,
-      chunks: ['app', 'vendor', 'polyfills'],
-      chunksSortMode: 'dependency',
-      mobile: true
-    }),
+    new HtmlWebpackPlugin(htmlWebpackPluginConfig),
     new CopyWebpackPlugin(
       [{ from: './static', to: './static', force: false }]
     ),

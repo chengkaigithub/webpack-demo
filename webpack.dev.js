@@ -5,6 +5,8 @@
 const path = require('path');
 const merge = require('webpack-merge');
 const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const htmlWebpackPluginConfig = require('./config')(false);
 const common = require('./webpack.common.js');
 
 module.exports = merge(common, {
@@ -17,6 +19,7 @@ module.exports = merge(common, {
   },
   devtool: 'inline-source-map',
   plugins: [
+    new HtmlWebpackPlugin(htmlWebpackPluginConfig),
     new webpack.HotModuleReplacementPlugin(),
     // new webpack.DefinePlugin({
     //   'process.env.NODE_ENV': JSON.stringify('development')

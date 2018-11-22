@@ -27,18 +27,14 @@ app.use(webpackDevMiddleware(compiler, {
 app.use('/static', express.static(path.join(__dirname, '../static')));
 
 app.use(webpackHotMiddleware(compiler, {
-//   // A function used to log lines, pass false to disable. Defaults to console.log
-//   // log: false,
-//   // The path which the middleware will serve the event stream on, must match the client setting
-//   // path: "/__what",
-//   // How often to send heartbeat updates to the client to keep the connection alive.
-//   // Should be less than the client's timeout setting - usually set to half its value.
-//   // reload: true,
-//   // dynamicPublicPath: config.output.publicPath,
-//   // path: "/__what",
-//   path: '/__webpack_hmr',
   heartbeat: 2000
 }));
+
+// 测试无效,开发环境需要在html里面写mate脚本.
+// app.all('*', function (req, res, next) {
+//   res.header('Content-Security-Policy', "default-src 'self';script-src 'self' https://cdn.staticfile.org 'nonce-EDNnf03nceIOfn39fn3e9h3sdfa';style-src 'self' 'unsafe-inline';connect-src 'self' https://jsonplaceholder.typicode.com;");
+//   next();
+// });
 
 // Serve the files on port 3000.
 app.listen(3000, function () {
