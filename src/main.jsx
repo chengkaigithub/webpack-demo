@@ -3,11 +3,11 @@
  * Describe:
  */
 
-import React from 'react';
+import React from "react";
 import ReactDOM from 'react-dom';
 import Loadable from "react-loadable";
 import _ from 'lodash';
-import './main.css';
+import './main3.less';
 
 class Main extends React.Component {
 
