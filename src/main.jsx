@@ -34,7 +34,7 @@ class Main extends React.Component {
     console.log(_.join(['main', 'print', '!'], ' '));
     Loadable({
       loader: () => import(/* webpackChunkName: "print" */ "./print"),
-      loading: <div style={{ width: '200px', height: '200px', backgroundColor: 'pink' }}>加载中...</div>
+      loading: <div className="loadingStyle">加载中...</div>
     }).preload() // 预加载|主动加载, 重复调用只执行一次
       .then(target => target.default())
       .catch(e => console.error('Loadable 加载 Error:', e));
@@ -42,21 +42,13 @@ class Main extends React.Component {
 
   render() {
     return (
-      <div style={styles.containerStyle}>
+      <div className="containerStyle">
         <div>react组件</div>
         <img src="/static/img/tc2.png" alt=""/>
         {/* 图片需要压缩的话需要使用require 相对路径引入 */}
         <img src={require('../static/img/merchant_auth.png')} alt="" onClick={this.clickImg}/>
       </div>
     );
-  }
-}
-
-const styles = {
-  containerStyle: {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center'
   }
 }
 
