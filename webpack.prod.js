@@ -4,6 +4,9 @@ const merge = require('webpack-merge');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const extractTextPlugin = new ExtractTextPlugin({
+  fallback: 'style-loader',
+});
 
 const common = require('./webpack.common.js');
 
@@ -28,17 +31,19 @@ module.exports = merge(common, {
     rules: [
       {
         test: /\.css$/,
-        use: ExtractTextPlugin.extract(['css-loader', 'postcss-loader'])
+        use: extractTextPlugin.extract({
+            use: ['css-loader', 'postcss-loader']
+          })
       },
       {
         test: /\.less$/i,
-        use: ExtractTextPlugin.extract(['css-loader', 'less-loader'])
+        use: extractTextPlugin.extract({
+          use: ['css-loader', 'less-loader']
+        })
       },
       {
         test: /\.scss$/,
-        use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          //如果需要，可以在 sass-loader 之前将 resolve-url-loader 链接进来
+        use: extractTextPlugin.extract({
           use: ['css-loader', 'sass-loader']
         })
       }
