@@ -4,9 +4,6 @@ const merge = require('webpack-merge');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
-const extractTextPlugin = new ExtractTextPlugin({
-  fallback: 'style-loader',
-});
 
 const common = require('./webpack.common.js');
 
@@ -31,19 +28,19 @@ module.exports = merge(common, {
     rules: [
       {
         test: /\.css$/,
-        use: extractTextPlugin.extract({
+        use: ExtractTextPlugin.extract({
             use: ['css-loader', 'postcss-loader']
           })
       },
       {
         test: /\.less$/i,
-        use: extractTextPlugin.extract({
+        use: ExtractTextPlugin.extract({
           use: ['css-loader', 'less-loader']
         })
       },
       {
         test: /\.scss$/,
-        use: extractTextPlugin.extract({
+        use: ExtractTextPlugin.extract({
           use: ['css-loader', 'sass-loader']
         })
       }
