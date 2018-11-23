@@ -2,8 +2,10 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const imageMinPngQuant = require("imagemin-pngquant");
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const InsertCustomScriptPlugin = require('./InsertCustomScriptPlugin');
 const htmlWebpackPluginConfig = require('./config')(true);
+
 module.exports = {
   entry: {
     polyfills: [path.resolve(__dirname, './src/polyfills.js')],
@@ -13,6 +15,10 @@ module.exports = {
     new CopyWebpackPlugin(
       [{ from: './static', to: './static', force: false }]
     ),
+    new MiniCssExtractPlugin({
+      filename: '[name].[hash:5].css',
+      chunkFilename: "[id].[hash:5].css"
+    }),
     new InsertCustomScriptPlugin({ chunkNames: ['polyfills'] })
   ],
   output: {
@@ -23,10 +29,6 @@ module.exports = {
   },
   module: {
     rules: [
-      // {
-      //   test: /\.(png|svg|jpg|jpeg|gif)$/,
-      //   loader: 'url-loader?limit=1024&name=[path][name]-[hash:5].min.[ext]', // limit 小于此限制的图片转为base64
-      // },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/,
         use: [
@@ -58,11 +60,18 @@ module.exports = {
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        use: {
-          loader: "babel-loader",
-          // options: { "babelrc": true } // default option
-        }
+        use: { loader: "babel-loader" }
       },
+      {
+        test: /\.(le|sa|sc|c)ss$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          'css-loader',
+          'postcss-loader',
+          'less-loader',
+          'sass-loader'
+        ]
+      }
     ]
   },
   optimization: {
