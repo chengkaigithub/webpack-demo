@@ -6,6 +6,9 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const InsertCustomScriptPlugin = require('./InsertCustomScriptPlugin');
 const htmlWebpackPluginConfig = require('./config')(true);
 
+// Ignore all deprecations and hope that nothing will silently break in the future.
+// process.noDeprecation = true;
+
 module.exports = {
   entry: {
     polyfills: [path.resolve(__dirname, './src/polyfills.js')],
