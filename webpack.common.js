@@ -2,7 +2,6 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const imageMinPngQuant = require("imagemin-pngquant");
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const InsertCustomScriptPlugin = require('./InsertCustomScriptPlugin');
 const htmlWebpackPluginConfig = require('./config')(true);
 
@@ -18,10 +17,6 @@ module.exports = {
     new CopyWebpackPlugin(
       [{ from: './static', to: './static', force: false }]
     ),
-    new MiniCssExtractPlugin({
-      filename: '[name].[hash:5].css',
-      chunkFilename: "[id].[hash:5].css"
-    }),
     new InsertCustomScriptPlugin({ chunkNames: ['polyfills'] })
   ],
   output: {
@@ -40,7 +35,7 @@ module.exports = {
             options: {
               // name: "[path][name]-[hash:5].min.[ext]",
               name: "[path][name].[ext]",
-              limit: 1000, // size <= 1KB
+              limit: 1, // size <= 1KB
             }
           },
           // img-loader for zip img
@@ -63,19 +58,12 @@ module.exports = {
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        use: { loader: "babel-loader" }
-      },
-      {
-        test: /\.(le|sa|sc|c)ss$/,
-        use: [
-          MiniCssExtractPlugin.loader,
-          'css-loader',
-          'postcss-loader',
-          'less-loader',
-          'sass-loader'
-        ]
+        use: "babel-loader"
       }
     ]
+  },
+  resolve: {
+    extensions: ['.js', '.jsx', '.scss', '.less', '.css']
   },
   optimization: {
     splitChunks: {

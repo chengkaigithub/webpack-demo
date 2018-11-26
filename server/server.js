@@ -36,6 +36,23 @@ app.use(webpackHotMiddleware(compiler, {
 //   next();
 // });
 
+/**
+ * 解决开发婚假直接输入路径404问题,方案:
+ * https://blog.csdn.net/lla520/article/details/77803773
+ */
+app.get('/*', (req, res) => {
+  const filename = path.join(compiler.outputPath, 'index.html');
+  compiler.outputFileSystem.readFile(filename, (err, result) => {
+    if (err) {
+      return next(err);
+    }
+    res.set('content-type', 'text/html');
+    res.send(result);
+    res.end();
+    return null;
+  });
+});
+
 // Serve the files on port 3000.
 app.listen(3900, function () {
   console.log('Example app listening on port 3900!\n');

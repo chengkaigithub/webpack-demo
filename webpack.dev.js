@@ -24,5 +24,13 @@ module.exports = merge(common, {
     // new webpack.DefinePlugin({
     //   'process.env.NODE_ENV': JSON.stringify('development')
     // })
-  ]
+  ],
+  module: {
+    rules: [
+      {
+        test: /\.(le|sa|sc|c)ss$/,
+        use: ["style-loader", "css-loader", "less-loader", "sass-loader"]
+      }
+    ]
+  }
 });

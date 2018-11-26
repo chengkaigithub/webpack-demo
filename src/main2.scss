@@ -12,21 +12,3 @@ body {
     /* 图片需要压缩的话使用相对路径即可 */
     background: url(../static/img/home.png);
 }
-
-img {
-    width: 200px;
-    height: 200px;
-    background-color: deeppink;
-}
-
-.containerStyle {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.loadingStyle {
-    width: 200px;
-    height: 200px;
-    background-color: pink;
-}
