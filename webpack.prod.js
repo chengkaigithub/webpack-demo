@@ -1,7 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
 const merge = require('webpack-merge');
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
@@ -14,13 +13,12 @@ module.exports = merge(common, {
   },
   plugins: [
     new CleanWebpackPlugin(['build']),
-    new UglifyJSPlugin(),
     // new webpack.DefinePlugin({
     //   'process.env.NODE_ENV': JSON.stringify('production')
     // }),
     new MiniCssExtractPlugin({
       filename: '[name].[hash:5].css',
-      chunkFilename: "[id].[hash:5].css"
+      chunkFilename: "[name].[hash:5].css"
     }),
     new webpack.HashedModuleIdsPlugin(), // 未修改的模块儿保持名称不变
   ],
