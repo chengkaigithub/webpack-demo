@@ -7,7 +7,7 @@ import React from "react";
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from "react-router-dom";
 import Routers from './routers';
-import './main3.less';
+import './main.less';
 
 if (module.hot) {
   module.hot.accept();

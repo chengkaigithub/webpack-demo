@@ -6,7 +6,6 @@
 import React, { Component } from 'react';
 import './PageOne.scss';
 import './Page404.scss';
-import '../main3.less';
 
 export default class PageOne extends Component {
 
