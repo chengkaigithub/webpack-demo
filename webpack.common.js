@@ -67,10 +67,10 @@ module.exports = {
   },
   optimization: {
     splitChunks: {
+      chunks: 'initial',
+      name: 'vendor',
       cacheGroups: {
         vendor: {
-          name: "vendor",
-          chunks: "initial",
           test: /lodash/,
         }
       }
