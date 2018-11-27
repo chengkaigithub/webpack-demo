@@ -7,8 +7,10 @@ import React, { Component } from 'react';
 import './PageOne.scss';
 import Loadable from "react-loadable";
 import _ from 'lodash';
+import { connect } from 'react-redux';
+import { mapDispatchToProps, mapStateToProps } from "./mapping";
 
-export default class PageOne extends Component {
+class PageOne extends Component {
 
   constructor(props) {
     super(props);
@@ -38,6 +40,18 @@ export default class PageOne extends Component {
       .catch(e => console.error('Loadable 加载 Error:', e));
   };
 
+  deleteUserInfo = () => {
+    this.props.deleteUser();
+  }
+
+  updateUserInfo = () => {
+    this.props.updateUser({ name: 'ck', age: '18', phone: '18586059608' });
+  }
+
+  printUserInfo = () => {
+    console.log(this.props.globalInfo);
+  }
+
   render() {
     return (
       <div className="containerStyle">
@@ -46,7 +60,12 @@ export default class PageOne extends Component {
         <img src="/static/img/tc2.png" alt="" onClick={this.clickJump}/>
         {/* 图片需要压缩的话需要使用require 相对路径引入 */}
         <img src={require('../../static/img/merchant_auth.png')} alt="" onClick={this.clickImg}/>
+        <button type="button" onClick={this.updateUserInfo}>更改user信息</button>
+        <button type="button" onClick={this.deleteUserInfo}>删除user信息</button>
+        <button type="button" onClick={this.printUserInfo}>打印user信息</button>
       </div>
     )
   }
 }
+
+export default connect(mapStateToProps, mapDispatchToProps)(PageOne);

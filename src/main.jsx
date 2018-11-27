@@ -6,6 +6,8 @@
 import React from "react";
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from "react-router-dom";
+import { Provider } from 'react-redux';
+import store from './redux-base/store'
 import Routers from './routers';
 import './main.less';
 
@@ -14,12 +16,13 @@ if (module.hot) {
 }
 
 class Main extends React.Component {
-
   render() {
     return (
-      <BrowserRouter>
-        <Routers/>
-      </BrowserRouter>
+      <Provider store={store}>
+        <BrowserRouter>
+          <Routers/>
+        </BrowserRouter>
+      </Provider>
     );
   }
 }
