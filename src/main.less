@@ -1,7 +1,16 @@
+@base-width: 750px;
+@custom-benchmark: 100px;
+@adapter-size: @custom-benchmark * 100vh/ @base-width;
+
 @gray-red: #f0d0e0;
+
+html {
+  font-size: @adapter-size;
+}
 
 body {
   background: @gray-red;
+  font-size: 16px;
 }
 
 .custom-font {
