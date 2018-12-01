@@ -5,3 +5,4 @@
 /build
 .vscode
 .DS_Store
+.remote_deploy_server.sh
