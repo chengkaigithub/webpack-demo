@@ -1,3 +1,5 @@
+$highlight-color: rgba(100, 100, 100, 0.3);
+
 img {
     width: 200px;
     height: 200px;
@@ -8,5 +10,15 @@ img {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     color: yellow;
+}
+
+.btn-style {
+    background-color: $highlight-color;
+    border-radius: 20px;
+    width: 30%;
+    border: none;
+    margin: 5px;
+    outline: none;
 }

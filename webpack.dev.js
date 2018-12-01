@@ -28,8 +28,12 @@ module.exports = merge(common, {
   module: {
     rules: [
       {
-        test: /\.(le|sa|sc|c)ss$/,
-        use: ["style-loader", "css-loader", "less-loader", "sass-loader"]
+        test: /\.(c|sc|sa)ss$/,
+        use: ["style-loader", "css-loader", "sass-loader"]
+      },
+      {
+        test: /\.(c|le)ss$/,
+        use: ["style-loader", "css-loader", "less-loader"]
       }
     ]
   }

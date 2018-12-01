@@ -60,9 +60,9 @@ class PageOne extends Component {
         <img src="/static/img/tc2.png" alt="" onClick={this.clickJump}/>
         {/* 图片需要压缩的话需要使用require 相对路径引入 */}
         <img src={require('../../static/img/merchant_auth.png')} alt="" onClick={this.clickImg}/>
-        <button type="button" onClick={this.updateUserInfo}>更改user信息</button>
-        <button type="button" onClick={this.deleteUserInfo}>删除user信息</button>
-        <button type="button" onClick={this.printUserInfo}>打印user信息</button>
+        <button type="button" className="btn-style" onClick={this.updateUserInfo}>更改user信息</button>
+        <button type="button" className="btn-style" onClick={this.deleteUserInfo}>删除user信息</button>
+        <button type="button" className="btn-style" onClick={this.printUserInfo}>打印user信息</button>
       </div>
     )
   }

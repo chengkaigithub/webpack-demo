@@ -25,13 +25,21 @@ module.exports = merge(common, {
   module: {
     rules: [
       {
-        test: /\.(le|sa|sc|c)ss$/,
+        test: /\.(c|sa|sc)ss$/,
         use: [
           MiniCssExtractPlugin.loader,
           'css-loader',
           'postcss-loader',
-          'less-loader',
-          'sass-loader'
+          'sass-loader',
+        ]
+      },
+      {
+        test: /\.(c|le)ss$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          'css-loader',
+          'postcss-loader',
+          'less-loader'
         ]
       }
     ]
