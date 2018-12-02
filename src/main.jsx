@@ -16,6 +16,14 @@ if (module.hot) {
 }
 
 class Main extends React.Component {
+  componentWillMount() {
+    const baseWidth = 750;
+    const customBenchmark = 100;
+    const deviceWidth = document.documentElement.clientWidth;
+    const adapterSize = customBenchmark * deviceWidth / baseWidth;
+    document.documentElement.style.fontSize = adapterSize + 'px';
+  }
+
   render() {
     return (
       <Provider store={store}>
