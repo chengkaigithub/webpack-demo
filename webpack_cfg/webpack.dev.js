@@ -13,7 +13,7 @@ module.exports = merge(common, {
   mode: 'development',
   entry: {
     app: [
-      path.resolve(__dirname, './src/main.jsx'),
+      path.resolve(__dirname, '../src/main.jsx'),
       'webpack-hot-middleware/client' // release need delete : 'webpack-hot-middleware/client'
     ]
   },

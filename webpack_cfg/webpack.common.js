@@ -10,7 +10,7 @@ const htmlWebpackPluginConfig = require('./config')(true);
 
 module.exports = {
   entry: {
-    polyfills: [path.resolve(__dirname, './src/polyfills.js')],
+    polyfills: [path.resolve(__dirname, '../src/polyfills.js')],
   },
   plugins: [
     new HtmlWebpackPlugin(htmlWebpackPluginConfig),
@@ -20,9 +20,9 @@ module.exports = {
     new InsertCustomScriptPlugin({ chunkNames: ['polyfills'] })
   ],
   output: {
-    filename: '[name].[hash:5].bundle.js',
-    chunkFilename: '[name].[chunkhash:5].bundle.js',
-    path: path.resolve(__dirname, 'build'),
+    filename: 'public/[name].[hash:5].bundle.js',
+    chunkFilename: 'public/[name].[chunkhash:5].bundle.js',
+    path: path.resolve(__dirname, '../build'),
     publicPath: '/'
   },
   module: {
