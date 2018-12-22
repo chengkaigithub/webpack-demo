@@ -57,7 +57,7 @@ class PageOne extends Component {
       <div className="containerStyle">
         <span>界面1</span>
         <div>react组件</div>
-        <img src="/static/img/tc2.png" alt="" onClick={this.clickJump}/>
+        {/*<img src="/static/img/tc2.png" alt="" onClick={this.clickJump}/>*/}
         {/* 图片需要压缩的话需要使用require 相对路径引入 */}
         <img src={require('../../static/img/merchant_auth.png')} alt="" onClick={this.clickImg}/>
         <button type="button" className="btn-style" onClick={this.updateUserInfo}>更改user信息</button>
