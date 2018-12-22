@@ -7,7 +7,7 @@ rm -rf node_modules
 /usr/local/yarn/yarn-v1.7.0/bin/yarn
 /usr/local/yarn/yarn-v1.7.0/bin/yarn build
 
-cd /usr/chengkai/test-project/webpack-demo/build
+cd /usr/chengkai/test-project/webpack-demo/product
 rm -rf *
 mv -f /usr/chengkai/test-project/webpack-demo/build/* /usr/chengkai/test-project/webpack-demo/product/
 
