@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <title>交易监控APP</title>
+</head>
+<script>
+  /**
+   * 设置rem;
+   */
+  (function () {
+    var d = document.documentElement;
+    var cw = d.clientWidth || 750;
+
+    document.documentElement.style.fontSize = (cw / 750 * 100) + 'px';
+  })()
+
+  /**
+   * 判断系统类型
+   * @type {Object}
+   */
+  var isMobile = {
+    Android: function () {
+      return navigator.userAgent.match(/Android/i) ? true : false;
+    },
+    BlackBerry: function () {
+      return navigator.userAgent.match(/BlackBerry/i) ? true : false;
+    },
+    IOS: function () {
+      return navigator.userAgent.match(/iPhone|iPad|iPod/i) ? true : false;
+    },
+    Windows: function () {
+      return navigator.userAgent.match(/IEMobile/i) ? true : false;
+    },
+    any: function () {
+      return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Windows());
+    }
+  };
+
+  function guid() {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+      var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+      return v.toString(16);
+    });
+  }
+</script>
+<style>
+    body, html {
+        width: 100%;
+        height: 100%;
+        padding: 0;
+        margin: 0;
+        font-family: 'Microsoft YaHei';
+    }
+
+    body {
+        background-color: #ffffff;
+        background-size: cover;
+    }
+</style>
+<body>
+<div class="box"></div>
+<script>
+  if (isMobile.Android()) {
+    location.href = 'https://www.ck-full-stack.top:3000/static/downlodtest/mp_trade_monitor_v1.0.0.apk';
+  } else if (isMobile.IOS()) {
+    location.href = 'itms-services://?action=download-manifest&url=https://www.ck-full-stack.top:3000/static/downlodtest/manifest.plist';
+  } else {
+    alert('请使用安卓或苹果系统下载！');
+  }
+</script>
+</body>
+</html>
