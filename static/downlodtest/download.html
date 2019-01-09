@@ -16,34 +16,17 @@
     document.documentElement.style.fontSize = (cw / 750 * 100) + 'px';
   })()
 
-  /**
-   * 判断系统类型
-   * @type {Object}
-   */
-  var isMobile = {
-    Android: function () {
-      return navigator.userAgent.match(/Android/i) ? true : false;
-    },
-    BlackBerry: function () {
-      return navigator.userAgent.match(/BlackBerry/i) ? true : false;
-    },
-    IOS: function () {
-      return navigator.userAgent.match(/iPhone|iPad|iPod/i) ? true : false;
-    },
-    Windows: function () {
-      return navigator.userAgent.match(/IEMobile/i) ? true : false;
-    },
-    any: function () {
-      return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Windows());
+  function _getSystem() {
+    const ua = navigator.userAgent;
+    if (ua.indexOf('Android') > -1 || ua.indexOf('Adr') > -1) {
+      return 0;
     }
-  };
-
-  function guid() {
-    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
-      var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
-      return v.toString(16);
-    });
+    if (!!ua.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/)) {
+      return 1;
+    }
+    return -1;
   }
+
 </script>
 <style>
     body, html {
@@ -62,10 +45,10 @@
 <body>
 <div class="box"></div>
 <script>
-  if (isMobile.Android()) {
-    location.href = 'https://www.ck-full-stack.top:3000/static/downlodtest/mp_trade_monitor_v1.0.0.apk';
-  } else if (isMobile.IOS()) {
-    location.href = 'itms-services://?action=download-manifest&url=https://www.ck-full-stack.top:3000/static/downlodtest/manifest.plist';
+  if (_getSystem() == 0) {
+    window.location.href = 'https://www.ck-full-stack.top:3000/static/downlodtest/mp_trade_monitor_v1.0.0.apk';
+  } else if (_getSystem() == 1) {
+    window.location.href = 'itms-services://?action=download-manifest&url=https://www.ck-full-stack.top:3000/static/downlodtest/manifest.plist';
   } else {
     alert('请使用安卓或苹果系统下载！');
   }
