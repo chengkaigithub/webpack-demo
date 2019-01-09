@@ -14,13 +14,21 @@
 					<string>https://www.ck-full-stack.top:3000/static/downlodtest/mp_trade_monitor_v1.0.0.ipa</string>
 				</dict>
 				<dict>
-					<key>kind</key>
-					<string>display-image</string>
-					<key>needs-shine</key>
-					<true/>
-					<key>url</key>
-					<string>https://www.ck-full-stack.top:3000/static/downlodtest/icon.png</string>
-				</dict>
+                    <key>kind</key>
+                    <string>full-size-image</string>
+                    <key>needs-shine</key>
+                    <true/>
+                    <key>url</key>
+                    <string>https://www.ck-full-stack.top:3000/static/downlodtest/icon_180.png</string>
+                </dict>
+                <dict>
+                    <key>kind</key>
+                    <string>display-image</string>
+                    <key>needs-shine</key>
+                    <true/>
+                    <key>url</key>
+                    <string>https://www.ck-full-stack.top:3000/static/downlodtest/icon_120.png</string>
+                </dict>
 			</array>
 			<key>metadata</key>
 			<dict>
