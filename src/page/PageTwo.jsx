@@ -51,8 +51,9 @@ export default class PageTwo extends React.Component {
         colorDecimal: '#E4E4E4', // 长刻度线颜色
         colorDigit: '#E4E4E4', // 短刻度线颜色
         divide: 10, // 刻度步长
-        fontSize: 20, // 数字 字体大小
+        fontSize: 12, // 数字 字体大小
         fontColor: '#666666', // 数字 字体颜色
+        smallScaleNum: 5, // 小刻度的个数
       }
     );
     new SlideRuler(
@@ -73,6 +74,7 @@ export default class PageTwo extends React.Component {
         divide: 10, // 刻度步长
         fontSize: 20, // 数字 字体大小
         fontColor: '#666666', // 数字 字体颜色
+        smallScaleNum: 6
       }
     );
   }

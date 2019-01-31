@@ -19,7 +19,8 @@ class sliderRuler {
       fontColor: '#666',
       maxValue: 230,
       minValue: 100,
-      currentValue: 160
+      currentValue: 160,
+      smallScaleNum: 10, // 小刻度的个数
     };
 
     this.localState = {
@@ -151,10 +152,10 @@ class sliderRuler {
     const canvas = this.canvas,
       context = canvas.getContext('2d');
     canvas.height = canvas.height;
-    let {canvasWidth, canvasHeight, maxValue, minValue, currentValue, handleValue, precision, divide, heightDecimal, heightDigit, lineWidth, colorDecimal, colorDigit, fontSize, fontColor} = this.options;
+    let {canvasWidth, canvasHeight, maxValue, minValue, currentValue, handleValue, precision, divide, heightDecimal, heightDigit, lineWidth, colorDecimal, colorDigit, fontSize, fontColor, smallScaleNum} = this.options;
     // 计算当前值
     currentValue = currentValue > minValue ? (currentValue < maxValue ? currentValue : maxValue) : minValue;
-    currentValue = Math.round(currentValue * 10 / precision) * precision / 10;
+    currentValue = Math.round(currentValue * smallScaleNum / precision) * precision / smallScaleNum;
     this.options.currentValue = currentValue;
     handleValue && handleValue(currentValue);
     let diffCurrentMin = (currentValue - minValue) * divide / precision,
@@ -175,23 +176,23 @@ class sliderRuler {
     // 定义每个刻度的精度
     const derivative = 1 / precision;
 
-    for (let i = Math.round(startValue / precision * 10) / 10; i <= endValue / precision; i++) {
+    for (let i = Math.round(startValue / precision * smallScaleNum) / smallScaleNum; i <= endValue / precision; i++) {
       context.beginPath();
       // 画刻度线
       context.moveTo(origin.x + (i - startValue / precision) * divide, 0);
-      // 画线到刻度高度，10的位数就加高
-      context.lineTo(origin.x + (i - startValue / precision) * divide, i % 10 === 0 ? heightDecimal : heightDigit);
+      // 画线到刻度高度，smallScaleNum 的位数就加高
+      context.lineTo(origin.x + (i - startValue / precision) * divide, i % smallScaleNum === 0 ? heightDecimal : heightDigit);
       context.lineWidth = lineWidth;
-      // 10的位数就加深
-      context.strokeStyle = (i % 10 === 0) ? colorDecimal : colorDigit;
+      // smallScaleNum 的位数就加深
+      context.strokeStyle = (i % smallScaleNum === 0) ? colorDecimal : colorDigit;
       context.stroke();
       // 描绘刻度值
       context.fillStyle = fontColor;
       context.textAlign = 'center';
       context.textBaseline = 'top';
-      if (i % 10 === 0) {
+      if (i % smallScaleNum === 0) {
         context.font = `${fontSize}px Arial`;
-        context.fillText(Math.round(i / 10) / (derivative / 10), origin.x + (i - startValue / precision) * divide, heightDecimal);
+        context.fillText(Math.round(i / smallScaleNum) / (derivative / smallScaleNum), origin.x + (i - startValue / precision) * divide, heightDecimal);
       }
       context.closePath();
     }
