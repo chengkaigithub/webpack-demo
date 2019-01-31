@@ -13,6 +13,6 @@ export default () => (
     <Route path="/pageOne" component={Loadable({ loader: () => import(/* webpackChunkName: "PageOne" */ "../page/PageOne"), loading: Loading })}/>
     <Route path="/pageTwo" component={Loadable({ loader: () => import(/* webpackChunkName: "PageTwo" */ "../page/PageTwo"), loading: Loading })}/>
     <Route path="/pageThree" component={Loadable({ loader: () => import(/* webpackChunkName: "PageThree" */ "../page/PageThree"), loading: Loading })}/>
-    <Route exact component={Loadable({ loader: () => import(/* webpackChunkName: "PageThree" */ "../page/Page404"), loading: Loading })}/>
+    <Route exact component={Loadable({ loader: () => import(/* webpackChunkName: "Page404" */ "../page/Page404"), loading: Loading })}/>
   </Switch>
 );
