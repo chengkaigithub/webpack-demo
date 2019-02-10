@@ -4,7 +4,6 @@
  */
 
 import React, { Component } from 'react';
-import './PageOne.scss';
 import './Page404.scss';
 
 export default class PageOne extends Component {

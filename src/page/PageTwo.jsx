@@ -4,8 +4,9 @@
  */
 
 import React from 'react';
-import './PageOne.scss';
+import './PageTwo.scss';
 import { SlideRuler } from "../components";
+import '../components/RulerSample';
 
 export default class PageTwo extends React.Component {
 
@@ -60,10 +61,10 @@ export default class PageTwo extends React.Component {
       {
         el: this.slideRulerDate,
         maxValue: 36, // 最大值
-        minValue: 1, // 最小值
-        currentValue: 1, // 当前值
+        minValue: 0, // 最小值
+        currentValue: 0, // 当前值
         handleValue: this.handleDateValue,
-        precision: 1, // 每一小格(每一步长)占据的数量
+        precision: 2, // 每一小格(每一步长)占据的数量
         canvasWidth: 300,
         canvasHeight: 83,
         heightDecimal: 35, // 长刻度线高度
@@ -74,9 +75,25 @@ export default class PageTwo extends React.Component {
         divide: 10, // 刻度步长
         fontSize: 20, // 数字 字体大小
         fontColor: '#666666', // 数字 字体颜色
-        smallScaleNum: 6
+        smallScaleNum: 3
       }
     );
+    new Ruler({
+      elem: '#ruler',
+      width: document.getElementById('ruler').offsetWidth, //画布宽
+      height: 50, // 画布高
+      start: 0, // 最小值
+      end: 10 * 10000, // 最大值
+      capacity: 2000, // 每个刻度代表值
+      value: 0, // 当前值
+      unit: 10, // 刻度距离
+      linecolor: '#f00', // 线颜色
+      scaleplate: {},
+      callback: (val) => { //刻度值改变时回调
+        console.log('刻度值改变时回调:', val);
+        document.querySelector('.value').innerHTML = val;
+      }
+    });
   }
 
   _setSlideRulerRefMoney(ref) {
@@ -101,6 +118,9 @@ export default class PageTwo extends React.Component {
           <span>{date}</span>
         </div>
         <div ref={this._setSlideRulerRefDate}/>
+
+        <canvas id="ruler"></canvas>
+        <div className="value"></div>
       </div>
     )
   }

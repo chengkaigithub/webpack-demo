@@ -5,7 +5,8 @@
 
 import Loading from './Loading';
 import SlideRuler from './SlideRuler';
+import Ruler from './RulerSample';
 
 export {
-  Loading, SlideRuler
+  Loading, SlideRuler, Ruler
 }

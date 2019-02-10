@@ -4,7 +4,7 @@
  */
 
 import React from 'react';
-import './PageOne.scss';
+import './PageThree.scss';
 
 export default (props) => (
   <div className="containerStyle">
