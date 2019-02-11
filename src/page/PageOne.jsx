@@ -56,7 +56,6 @@ class PageOne extends Component {
     return (
       <div className={styles.containerStyle}>
         <span>界面1</span>
-        <span>界面1</span>
         <div>react组件</div>
         <img src="/static/img/tc2.png" alt="" onClick={this.clickJump}/>
         {/* 图片需要压缩的话需要使用require 相对路径引入 */}
