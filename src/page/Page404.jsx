@@ -4,7 +4,7 @@
  */
 
 import React, { Component } from 'react';
-import './Page404.scss';
+import styles from './Page404.scss';
 
 export default class PageOne extends Component {
 
@@ -14,7 +14,7 @@ export default class PageOne extends Component {
 
   render() {
     return (
-      <div className="containerStyle">
+      <div className={styles.containerStyle}>
         <span>404</span>
       </div>
     )

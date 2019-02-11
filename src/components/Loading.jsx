@@ -3,8 +3,8 @@
  * Describe: 加载中组件
  */
 import React from 'react';
-import './Loading.scss';
+import styles from './Loading.scss';
 
 export default () => (
-  <div className="loadingStyle">加载中...</div>
+  <div className={styles.loadingStyle}>加载中...</div>
 )

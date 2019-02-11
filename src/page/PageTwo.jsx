@@ -4,7 +4,7 @@
  */
 
 import React from 'react';
-import './PageTwo.scss';
+import styles from './PageTwo.scss';
 import { SlideRuler } from "../components";
 // import '../components/RulerSample';
 
@@ -106,7 +106,7 @@ export default class PageTwo extends React.Component {
   render() {
     const { money, date } = this.state;
     return (
-      <div className="containerStyle">
+      <div className={styles.containerStyle}>
         <span>界面2</span>
         <div>
           <span>金额:</span>
@@ -119,7 +119,7 @@ export default class PageTwo extends React.Component {
         </div>
         <div ref={this._setSlideRulerRefDate}/>
 
-        <canvas id="ruler"></canvas>
+        <canvas id="ruler" className={styles.canvas}></canvas>
         <div className="value"></div>
       </div>
     )

@@ -40,8 +40,8 @@ class sliderRuler {
   _renderBox(container) {
     const box = document.createElement('div'), canvas = document.createElement('canvas');
     this.canvas = canvas;
-    // modify: box.className = styles.box;
-    box.className = 'box';
+    box.className = styles.box;
+    // modify: box.className = 'box';
     box.appendChild(canvas);
     container.appendChild(box);
     this._renderCanvas();
@@ -53,8 +53,8 @@ class sliderRuler {
     canvas.height = canvasHeight * 2;
     canvas.style.width = canvasWidth + 'px';
     canvas.style.height = canvasHeight + 'px';
-    // modify: canvas.className = styles.canvas;
-    canvas.className = 'canvas';
+    canvas.className = styles.canvas;
+    // modify: canvas.className = 'canvas';
     if (this.browserEnv) {
       canvas.ontouchstart = this.touchStart.bind(this);
       canvas.ontouchmove = this.touchMove.bind(this);

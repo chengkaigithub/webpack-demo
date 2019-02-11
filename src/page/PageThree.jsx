@@ -4,10 +4,10 @@
  */
 
 import React from 'react';
-import './PageThree.scss';
+import styles from './PageThree.scss';
 
 export default (props) => (
-  <div className="containerStyle">
+  <div className={styles.containerStyle}>
     <span>界面3</span>
   </div>
 )
