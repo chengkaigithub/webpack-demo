@@ -2,7 +2,7 @@
 
 body {
   background: @gray-red;
-  font-size: 0.16rem;
+  font-size: 16px;
 }
 
 .custom-font {
@@ -16,3 +16,8 @@ body {
   background: url(/static/img/home.png);
 }
 
+/* 修复引入 viewport-units-buggyfill 图片不显示问题
+img {
+  content: normal !important;
+}
+*/

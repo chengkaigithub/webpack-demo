@@ -1,9 +1,9 @@
 $highlight-color: rgba(100, 100, 100, 0.3);
 
 img {
-    width: 2rem;
+    width: 200px;
     background-color: deeppink;
-    margin: 0.02rem;
+    margin: 2px;
 }
 
 .containerStyle {
@@ -16,9 +16,10 @@ img {
 
 .btn-style {
     background-color: $highlight-color;
-    border-radius: 0.2rem;
+    border-radius: 20px;
     width: 30%;
     border: none;
-    margin: 0.05rem;
+    margin: 5px;
     outline: none;
+    font-size: 16px;
 }
