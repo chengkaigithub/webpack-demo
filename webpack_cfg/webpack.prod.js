@@ -19,8 +19,8 @@ module.exports = merge(common, {
     //   'process.env.NODE_ENV': JSON.stringify('production')
     // }),
     new MiniCssExtractPlugin({
-      filename: 'public/[name].[hash:5].css',
-      chunkFilename: "public/[name].[hash:5].css"
+      filename: 'public/[name].[hash:8].css',
+      chunkFilename: "public/[name].[hash:8].css"
     }),
     new webpack.HashedModuleIdsPlugin(), // 未修改的模块儿保持名称不变
   ],

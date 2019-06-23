@@ -20,8 +20,8 @@ module.exports = {
     new InsertCustomScriptPlugin({ chunkNames: ['polyfills'] })
   ],
   output: {
-    filename: 'public/[name].[hash:5].bundle.js',
-    chunkFilename: 'public/[name].[chunkhash:5].bundle.js',
+    filename: 'public/[name].[hash:8].bundle.js',
+    chunkFilename: 'public/[name].[chunkhash:8].bundle.js',
     path: path.resolve(__dirname, '../build'),
     publicPath: '/'
   },
@@ -33,7 +33,7 @@ module.exports = {
           {
             loader: "url-loader",
             options: {
-              // name: "[path][name]-[hash:5].min.[ext]",
+              // name: "[path][name]-[hash:8].min.[ext]",
               name: "[path][name].[ext]",
               limit: 1, // size <= 1KB
             }
