@@ -10,6 +10,7 @@ import { Provider } from 'react-redux';
 import store from './redux-base/store'
 import Routers from './routers';
 import './main.less';
+import {registerSW} from "./utils/registerSW";
 
 if (module.hot) {
   module.hot.accept();
@@ -39,3 +40,8 @@ ReactDOM.render(
   <Main/>,
   document.getElementById("container")
 );
+
+registerSW({
+  onUpdate: res => console.log('sw onUpdate=>', res),
+  onSuccess: res => console.log('sw onSuccess=>', res),
+})
