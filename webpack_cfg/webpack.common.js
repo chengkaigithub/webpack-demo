@@ -4,6 +4,9 @@ const imageMinPngQuant = require("imagemin-pngquant");
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const InsertCustomScriptPlugin = require('./InsertCustomScriptPlugin');
 const htmlWebpackPluginConfig = require('./config')(true);
+const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
+
+const PUBLIC_PATH = 'https://www.ck-full-stack.top:3900/';  // webpack needs the trailing slash for output.publicPath
 
 // Ignore all deprecations and hope that nothing will silently break in the future.
 // process.noDeprecation = true;
@@ -13,6 +16,14 @@ module.exports = {
     polyfills: [path.resolve(__dirname, '../src/polyfills.js')],
   },
   plugins: [
+    new SWPrecacheWebpackPlugin({
+      cacheId: 'ck-full-stack',
+      // dontCacheBustUrlsMatching: /\.\w{8}\./,
+      filename: 'service-worker.js',
+      minify: true,
+      navigateFallback: PUBLIC_PATH + 'index.html',
+      staticFileGlobsIgnorePatterns: [/\.map$/, /asset-manifest\.json$/],
+    }),
     new HtmlWebpackPlugin(htmlWebpackPluginConfig),
     new CopyWebpackPlugin(
       [{ from: './static', to: './static', force: false }]
